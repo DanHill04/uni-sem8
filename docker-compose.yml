@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    container_name: uni-sem8
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+      - "5000:5000"
+      - "8000:8000"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:7.4
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  mongo_data:
+  redis_data:
