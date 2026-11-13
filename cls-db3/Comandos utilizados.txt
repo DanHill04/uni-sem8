@@ -1,0 +1,145 @@
+﻿El trabajo original se desarrollo con mongosh y desde un contenedor en Docker.
+
+mongosh ingeniar_inoxidable
+
+// Seleccionar explicitamente la base de trabajo.
+db = db.getSiblingDB("ingeniar_inoxidable");
+
+// Comprobar el catálogo. Resultado esperado: 30.
+db.catalogo_productos.countDocuments();
+
+// Comprobar los índices actuales.
+db.catalogo_productos.getIndexes();
+
+
+2. SEIS PIPELINES DE AGREGACION
+
+// Productos de entrega rápida por categoría
+// Pregunta: ¿Cuántos productos con entrega rápida tiene cada categoría, de mayor a menor?
+
+db.catalogo_productos.aggregate([
+  { $match: { disponible_entrega_rapida: true } },
+  { $group: {
+      _id: "$categoria",
+      cantidad_productos: { $sum: 1 }
+  } },
+  { $sort: { cantidad_productos: -1, _id: 1 } }
+]).toArray();
+
+// Precio promedio de productos personalizados
+// Pregunta: ¿Cuál es el precio base estimado promedio de los productos personalizados por tipo de acero, de mayor a menor?
+
+db.catalogo_productos.aggregate([
+  { $match: { es_personalizado: true } },
+  { $group: {
+      _id: "$tipo_acero",
+      precio_promedio: { $avg: "$precio_base_estimado" }
+  } },
+  { $sort: { precio_promedio: -1, _id: 1 } }
+]).toArray();
+
+// Tiempo de fabricación por tipo de acero
+// Pregunta: ¿Cuánto tiempo estándar de fabricación suma el catálogo de productos personalizados por tipo de acero?
+
+db.catalogo_productos.aggregate([
+  { $match: { es_personalizado: true } },
+  { $group: {
+      _id: "$tipo_acero",
+      tiempo_total_minutos: { $sum: "$tiempo_estandar_minutos" }
+  } },
+  { $sort: { tiempo_total_minutos: -1, _id: 1 } }
+]).toArray();
+
+// Productos con mayor precio base
+// Pregunta: ¿Cuáles son los cinco productos con mayor precio base estimado del catálogo?
+
+db.catalogo_productos.aggregate([
+  { $sort: { precio_base_estimado: -1, _id: 1 } },
+  { $limit: 5 },
+  { $project: {
+      _id: 1, nombre_producto: 1,
+      tipo_acero: 1, precio_base_estimado: 1
+  } }
+]).toArray();
+
+// Productos de fabricación más corta
+// Pregunta: ¿Cuáles son los cinco productos disponibles para entrega rápida con menor tiempo estándar de fabricación?
+
+db.catalogo_productos.aggregate([
+  { $match: { disponible_entrega_rapida: true } },
+  { $sort: { tiempo_estandar_minutos: 1, _id: 1 } },
+  { $limit: 5 },
+  { $project: {
+      _id: 1, nombre_producto: 1, tiempo_estandar_minutos: 1
+  } }
+]).toArray();
+
+// Productos personalizados de menor precio
+// Pregunta: ¿Cuáles son los cinco productos personalizados de acero AISI 304 con menor precio base estimado?
+
+db.catalogo_productos.aggregate([
+  { $match: {
+      es_personalizado: true, tipo_acero: "AISI 304"
+  } },
+  { $sort: { precio_base_estimado: 1, _id: 1 } },
+  { $limit: 5 },
+  { $project: {
+      _id: 1, nombre_producto: 1, precio_base_estimado: 1
+  } }
+]).toArray();
+
+3. INDICES
+
+// INDICE 1: UN SOLO CAMPO
+// Consulta de negocio: buscar productos de acero AISI 316L.
+
+// Consulta que se quiere acelerar.
+
+db.catalogo_productos.find({
+  tipo_acero: "AISI 316L"
+});
+
+// INDICE 2: COMPUESTO
+// Consulta de negocio: productos de Mobiliario Industrial
+
+// Consulta que se quiere acelerar.
+
+db.catalogo_productos.find({
+  categoria: "Mobiliario Industrial"
+}).sort({ precio_base_estimado: 1 });
+
+4. REDIS EN CONSOLA
+
+Abrir la terminal del contenedor uni-sem8-redis-1 y ejecutar:
+
+redis-cli
+
+4.1 DATO CON TIEMPO DE VIDA
+
+SET borrador:cotizacion:INOX-COT-001
+GET borrador:cotizacion:INOX-COT-001
+TTL borrador:cotizacion:INOX-COT-001
+
+4.2 CONTADOR DE VISITAS
+
+INCR visitas:producto:PROD-INOX-001
+INCR visitas:producto:PROD-INOX-001
+INCR visitas:producto:PROD-INOX-001
+GET visitas:producto:PROD-INOX-001
+
+4.3 HASH PARA UNA COTIZACION TEMPORAL
+
+HSET carrito:cotizacion:INOX-COT-002 PROD-INOX-001 1 PROD-INOX-006 2
+HGETALL carrito:cotizacion:INOX-COT-002
+HINCRBY carrito:cotizacion:INOX-COT-002 PROD-INOX-001 1
+HGETALL carrito:cotizacion:INOX-COT-002
+EXPIRE carrito:cotizacion:INOX-COT-002 1800
+TTL carrito:cotizacion:INOX-COT-002
+
+4.4 RANKING DE PRODUCTOS CONSULTADOS
+
+ZINCRBY ranking:productos:consultas 1 PROD-INOX-001
+ZINCRBY ranking:productos:consultas 1 PROD-INOX-002
+ZINCRBY ranking:productos:consultas 1 PROD-INOX-002
+ZINCRBY ranking:productos:consultas 1 PROD-INOX-006
+ZREVRANGE ranking:productos:consultas 0 2 WITHSCORES
