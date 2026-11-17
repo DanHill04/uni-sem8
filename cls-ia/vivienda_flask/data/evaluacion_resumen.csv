@@ -1,0 +1,27 @@
+﻿Serie,Anios evaluados,MAE lineal,MAE referencia,Lineal mejora referencia
+General,3,7861.729049897753,14856.333333333334,True
+Municipio 66001,3,274.75488721804385,219.33333333333334,False
+Programa: ahorro programado contractual,3,4528.611111111163,3336.6666666666665,False
+Programa: bolsa atentados terroristas,3,245.6362273291355,282.6666666666667,True
+Programa: bolsa concejales,3,150.9214145822904,118.66666666666667,False
+Programa: bolsa desastres naturales,3,1115.526395858634,85.0,False
+Programa: bolsa desplazados,3,3040.220536188921,36.333333333333336,False
+Programa: bolsa esfuerzo territorial,3,1560.5695982955706,17.333333333333332,False
+Programa: bolsa ordinaria,3,3599.55830814573,2.0,False
+Programa: bolsa recicladores,1,402.0,286.0,False
+Programa: bolsa saludable,1,2176.0,1639.0,False
+Programa: bolsa unica nacional,3,1453.4192572205404,9.333333333333334,False
+Programa: bolsa única mejoramiento,1,573.0,406.0,False
+Programa: casa digna vida digna,3,11910.011111111156,11432.0,False
+Programa: concurso de esfuerzo territorial nacional,3,3583.0165649520736,1165.6666666666667,False
+Programa: fenómeno de la niña,3,399.8465608465679,78.66666666666667,False
+Programa: habilitación de titulos,1,28059.5,24730.0,False
+Programa: macroproyecto,3,276.3956349206176,26.0,False
+Programa: mi casa ya,3,38760.016402116664,19555.333333333332,False
+Programa: programa vivienda gratuita fase i,3,6166.860401002497,51.0,False
+Programa: programa vivienda gratuita fase ii,3,1418.5761904762282,810.3333333333334,False
+Programa: semillero de propietarios ahorro,3,620.1666666666666,356.6666666666667,False
+Programa: semillero de propietarios arriendo,3,7401.444444444394,4078.0,False
+Programa: subsidios en especie y complementarios,1,4978.0,126.0,False
+Programa: tutelas,3,1.9573573573573289,1.3333333333333333,False
+Programa: vipa,3,2226.887301587189,949.3333333333334,False

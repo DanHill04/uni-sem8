@@ -1,0 +1,69 @@
+﻿Serie,Año de Asignación,Hogares observados,Prediccion lineal,Referencia ultimo anio observado
+General,2023,54650,58057.810526316054,86397
+General,2024,55340,58944.57142857183,54650
+General,2025,43208,59780.805194805376,55340
+Municipio 66001,2023,472,577.0789473684199,696
+Municipio 66001,2024,263,543.1857142857116,472
+Municipio 66001,2025,38,477.0,263
+Programa: ahorro programado contractual,2011,5635,654.0,1229
+Programa: ahorro programado contractual,2012,2607,6720.333333333489,5635
+Programa: ahorro programado contractual,2013,31,4522.5,2607
+Programa: bolsa atentados terroristas,2017,473,-152.08345021033892,90
+Programa: bolsa atentados terroristas,2018,35,34.37826627958566,473
+Programa: bolsa atentados terroristas,2020,8,-103.20349805665319,35
+Programa: bolsa concejales,2013,1,371.7999999999993,351
+Programa: bolsa concejales,2014,4,39.86486486486683,1
+Programa: bolsa concejales,2015,1,-45.09937888200511,4
+Programa: bolsa desastres naturales,2023,50,-1106.0875883739209,244
+Programa: bolsa desastres naturales,2024,5,-1084.2546253469773,50
+Programa: bolsa desastres naturales,2025,21,-1080.2369738550042,5
+Programa: bolsa desplazados,2023,68,-2727.9105263156816,35
+Programa: bolsa desplazados,2024,5,-3028.3095238094684,68
+Programa: bolsa desplazados,2025,18,-3273.441558441613,5
+Programa: bolsa esfuerzo territorial,2017,30,-1380.8032909499016,10
+Programa: bolsa esfuerzo territorial,2018,1,-1562.7782608696725,30
+Programa: bolsa esfuerzo territorial,2019,4,-1703.127243067138,1
+Programa: bolsa ordinaria,2015,1,-4198.750000000233,1
+Programa: bolsa ordinaria,2016,4,-3180.6625258799177,1
+Programa: bolsa ordinaria,2018,1,-3413.262398557039,4
+Programa: bolsa recicladores,2012,1,403.0,287
+Programa: bolsa saludable,2010,3999,1823.0,5638
+Programa: bolsa unica nacional,2017,4,-1040.7485928705428,29
+Programa: bolsa unica nacional,2019,4,-1531.7846889952198,4
+Programa: bolsa unica nacional,2021,1,-1778.724489795859,4
+Programa: bolsa única mejoramiento,2009,308,-265.0,714
+Programa: casa digna vida digna,2023,794,7862.333333333489,4986
+Programa: casa digna vida digna,2024,4133,2717.0,794
+Programa: casa digna vida digna,2025,30898,3652.3000000000175,4133
+Programa: concurso de esfuerzo territorial nacional,2016,201,10343.0,2763
+Programa: concurso de esfuerzo territorial nacional,2017,588,81.19354838703293,201
+Programa: concurso de esfuerzo territorial nacional,2018,40,140.24324324325426,588
+Programa: fenómeno de la niña,2020,122,-337.17857142857974,7
+Programa: fenómeno de la niña,2021,10,-345.0277777778101,122
+Programa: fenómeno de la niña,2022,1,-384.33333333331393,10
+Programa: habilitación de titulos,2008,646,28705.5,25376
+Programa: macroproyecto,2023,40,-216.42857142855064,32
+Programa: macroproyecto,2024,9,-244.53333333332557,40
+Programa: macroproyecto,2025,48,-271.2249999999767,9
+Programa: mi casa ya,2023,52239,77346.8214285709,67338
+Programa: mi casa ya,2024,50218,76091.02777777985,52239
+Programa: mi casa ya,2025,8672,73971.19999999925,50218
+Programa: programa vivienda gratuita fase i,2023,10,7464.877192982414,56
+Programa: programa vivienda gratuita fase i,2024,104,6167.342105263175,10
+Programa: programa vivienda gratuita fase i,2025,117,5099.361904761903,104
+Programa: programa vivienda gratuita fase ii,2023,642,3334.8000000000466,2213
+Programa: programa vivienda gratuita fase ii,2024,96,1575.285714285681,642
+Programa: programa vivienda gratuita fase ii,2025,410,326.3571428570431,96
+Programa: semillero de propietarios ahorro,2022,916,1207.0,756
+Programa: semillero de propietarios ahorro,2023,709,1270.0,916
+Programa: semillero de propietarios ahorro,2024,6,1014.5,709
+Programa: semillero de propietarios arriendo,2023,96,14557.0,10700
+Programa: semillero de propietarios arriendo,2024,764,6687.59999999986,96
+Programa: semillero de propietarios arriendo,2025,1726,3545.7333333333227,764
+Programa: subsidios en especie y complementarios,2008,390,-4588.0,264
+Programa: tutelas,2021,1,0.33333333333337123,1
+Programa: tutelas,2023,2,0.20000000000004547,1
+Programa: tutelas,2025,5,1.5945945945945965,2
+Programa: vipa,2021,648,1538.9999999995343,2863
+Programa: vipa,2022,120,-502.17857142863795,648
+Programa: vipa,2025,15,-5152.483333333395,120

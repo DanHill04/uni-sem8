@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %} | Predicciones de vivienda</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f3f6fa; color: #203047; font-family: Arial, sans-serif; line-height: 1.65; }
+        header { background: #173b58; color: white; padding: 32px 24px; }
+        header div, main, .nav-interior { max-width: 1050px; margin: auto; }
+        header p { margin: 0; color: #dbe8f3; }
+        h1 { margin: 4px 0 12px; line-height: 1.2; font-size: clamp(28px, 5vw, 40px); }
+        h2 { color: #173b58; margin-top: 0; font-size: 23px; }
+        nav { background: white; border-bottom: 1px solid #dce4ed; }
+        .nav-interior { display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 24px; }
+        nav a { color: #173b58; text-decoration: none; padding: 10px 12px; border-radius: 6px; font-size: 15px; }
+        nav a:hover { background: #e8eff6; }
+        nav a[aria-current="page"] { background: #173b58; color: white; }
+        a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #ac7415; outline-offset: 3px; }
+        main { padding: 28px 24px; }
+        section { margin-bottom: 24px; }
+        .panel { background: white; border: 1px solid #dce4ed; border-radius: 12px; padding: 24px; }
+        .nota { background: #fff5df; border-left: 4px solid #ac7415; padding: 18px 22px; }
+        .tabla { overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; font-size: 14px; }
+        th, td { border-bottom: 1px solid #dce4ed; padding: 12px; text-align: left; }
+        th { background: #e8eff6; }
+        tbody tr:nth-child(even) { background: #f7f9fc; }
+        tr.advertencia td { background: #fff5df; }
+        img { display: block; max-width: 100%; height: auto; margin: 16px auto; }
+        form { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 24px; }
+        select { max-width: 100%; padding: 10px; border: 1px solid #a6b5c5; border-radius: 6px; }
+        button { background: #173b58; color: white; border: 0; border-radius: 6px; padding: 12px 18px; cursor: pointer; }
+        footer { text-align: center; padding: 20px; color: #52657a; font-size: 14px; }
+        @media(max-width: 600px) {
+            .nav-interior { padding: 10px 12px; }
+            nav a { flex: 1 1 45%; text-align: center; }
+            main { padding: 20px 12px; }
+            .panel { padding: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header><div>
+        <h1>Predicciones de subsidios de vivienda</h1>
+    </div></header>
+    <nav aria-label="Módulos de la aplicación"><div class="nav-interior">
+        <a href="{{ url_for('introduccion') }}" {% if activo == 'introduccion' %}aria-current="page"{% endif %}>Introducción</a>
+        {% for clave, etiqueta in [('historico', 'Datos históricos'), ('general', 'Predicción general'), ('pereira', 'Pereira'), ('programas', 'Programas'), ('evaluacion', 'Evaluación')] %}
+        <a href="{{ url_for('modulo', nombre=clave) }}" {% if activo == clave %}aria-current="page"{% endif %}>{{ etiqueta }}</a>
+        {% endfor %}
+    </div></nav>
+    <main>{% block contenido %}{% endblock %}</main>
+    <footer>Visualización de resultados con Flask</footer>
+</body>
+</html>
